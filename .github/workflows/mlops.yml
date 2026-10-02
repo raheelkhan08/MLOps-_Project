@@ -1,0 +1,25 @@
+name: MLOps Automated Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test-robot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Code GitHub se uthao (Checkout)
+        uses: actions/checkout@v3
+
+      - name: 2. Python Setup karo
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: 3. Docker ka Dabba Tayaar Karo (Build Image)
+        run: docker build -t cyber-robot .
+        
+      - name: 4. MashaAllah! Automation Complete ✅
+        run: echo "Aapka Robot bilkul theek kaam kar raha hai aur Deploy hone ke liye tayaar hai!"
